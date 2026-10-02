@@ -1,0 +1,198 @@
+/* Distinct charcoal surfaces and gold interaction states across the four steps. */
+/* Surfaces and lines come from the shared design-system tokens so the booking
+   flow and the home page read as one product. */
+.booking-page{--surface:#131313;--surface-raised:#171717;--card-border:var(--line);--card-radius:0px}
+.booking-page .booking-section{padding-bottom:44px}
+.booking-page .theatre{display:grid;grid-template-columns:45% 55%;height:auto;min-height:650px;max-height:none;padding:16px 0 30px;overflow:visible}
+.booking-page .theatre:after{display:none}
+.booking-page .theatre .portrait-area{width:45%;height:100%;top:0;left:0;overflow:hidden;background:radial-gradient(ellipse at 48% 50%,#d1ad6018,transparent 64%)}
+.booking-page .theatre .portrait-card{height:100%;bottom:0;mask-image:linear-gradient(#000 0%,#000 75%,transparent 98%)}
+.booking-page .theatre .portrait-card img{object-fit:cover;object-position:center top;filter:brightness(.97)}
+.booking-page .theatre .hero-word{left:21%;top:32%;font-size:19vw;opacity:.14;max-width:44%;overflow:hidden;letter-spacing:-5px}
+.booking-page .theatre .hero-person{left:2%;bottom:9%;max-width:40%}
+.booking-page .theatre .barber-copy{grid-column:2;position:relative;right:auto;bottom:auto;transform:none;width:100%;min-width:0;max-width:none;padding:0 0 0 30px;align-self:center}
+.barber-details{position:relative;background:var(--surface);border:1px solid var(--card-border);border-radius:var(--card-radius);padding:28px 32px}
+.detail-heading{position:relative;border-bottom:1px solid #ffffff1c;margin-bottom:20px;padding-bottom:18px}
+.detail-heading .eyebrow{font-size:13px;letter-spacing:1.8px}.detail-heading h2{font-size:30px;margin:6px 0 0;line-height:1.4;letter-spacing:0}
+.booking-page .theatre .description{font-size:18px;margin:0 0 16px;line-height:1.85}
+.booking-page .theatre .chips{gap:10px;margin:12px 0}
+.booking-page .theatre .chips span{border:1px solid #d1ad6055;background:#d1ad6010;border-radius:0;padding:7px 11px;font-size:14px;color:#eedca5}
+.booking-page .theatre .date-check{border-top:1px solid #ffffff20;padding-top:14px;margin-top:18px}
+.booking-page .theatre .availability{background:#0d0f0d80;border:1px solid #d1ad6030;border-radius:0;padding:10px 12px;margin:10px 0 0;color:#ebd492}
+/* "No slots" is a dead end for the customer, so it reads as an alert, not a tint. */
+.booking-page .availability.off,.booking-page .theatre .availability.off{background:#2a120f;border:1px solid #a03a2b;border-left-width:3px;color:#ff8a76;font-weight:600;padding:11px 13px;margin:10px 0 0}
+.booking-page #choose-barber{margin-top:18px;min-height:58px;border-radius:0}
+.booking-page .theatre .barber-tabs{gap:10px;margin-top:14px}
+.booking-page .theatre .barber-tabs button{border:1px solid #ffffff25;border-radius:0;background:#171819;padding:11px 6px;font-size:14px;line-height:1.5}
+.booking-page .theatre .barber-tabs button:is([aria-pressed=true],[aria-checked=true]){background:#d1ad6015;border:1px solid #d1ad6099;color:#f0d695}
+/* The calendar and available times are two clear, independent panels. */
+.booking-page .calendar,.booking-page .time-panel,.booking-page .upload,.booking-page #style label.field,.booking-page .contact-card,.booking-page .payment-summary{background:var(--surface);border:1px solid var(--card-border);border-radius:var(--card-radius)}
+.booking-page .calendar-layout{gap:24px;grid-template-columns:1fr 1fr;align-items:stretch}
+.booking-page .calendar{padding:26px}.booking-page .time-panel{padding:26px;border-color:#d1ad604d}
+.booking-page .month-heading{border-bottom:1px solid #ffffff1c;padding-bottom:18px;margin-bottom:15px}
+.booking-page .month-heading h3{font-size:23px;color:#f7edce}
+.booking-page .calendar .weekdays span{color:#cbc9c2;font-size:13px;padding:8px 0}
+.booking-page .days{gap:7px}
+.booking-page .days button{background:#ffffff06;border:1px solid #ffffff10;color:#eceae4;border-radius:0;min-height:46px}
+.booking-page .days button:disabled{opacity:.28;background:transparent}
+.booking-page .days button.selected{background:var(--accent);border-color:var(--accent);color:#0c1005}
+.booking-page .days button.today:not(.selected){border-color:#d1ad6088}
+.booking-page .days button.day-off{color:#e5b889}
+.booking-page .legend{border-top:1px solid #ffffff1c;padding-top:15px;color:#bfc0bc}
+.booking-page .time-grid{gap:9px;padding:3px}
+.booking-page .time-grid button{background:#303134;border:1px solid #656465;color:#fff;border-radius:0;min-height:46px;font-weight:500}
+.booking-page .time-grid button:disabled{background:#131416;border-color:#ffffff14;color:#aaa;opacity:.5}
+.booking-page .time-grid button.selected{background:var(--accent);border-color:#e9cc80;color:#080808;box-shadow:0 0 0 2px #d1ad6033}
+.booking-page .time-panel .step-summary{background:#101112;padding:12px 14px;border-radius:0;color:#d2cfc4}
+.booking-page .time-panel .primary{border-radius:0}
+/* Four real studio photographs, each with its own cut and explanation. */
+.style-source{font-size:13px;color:#c4b78f;margin:-6px 0 20px;line-height:1.7}
+.booking-page .style-options{gap:16px;align-items:stretch}
+.booking-page .style-choice{position:relative;display:flex;flex-direction:column;padding:0;overflow:hidden;min-height:0;background:var(--surface);border:1px solid var(--card-border);border-radius:var(--card-radius);transition:transform .25s,border-color .25s,box-shadow .25s}
+.style-photo{display:block;position:relative;width:100%;height:240px;overflow:hidden;background:#353535;border-bottom:1px solid #ffffff20}
+.style-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+[data-style=texture] .style-photo img{object-position:50% 68%}
+[data-style=classic] .style-photo img{object-position:50% 42%}
+[data-style=flow] .style-photo img{object-position:50% 65%}
+.style-number{position:absolute;top:12px;left:12px;background:#080808d9;color:#f0d695;border:1px solid #d1ad6055;border-radius:0;padding:4px 9px;font-size:12px;letter-spacing:1px}
+.style-selected{position:absolute;top:12px;right:12px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;color:#080808;background:var(--accent);opacity:0;transform:scale(.6);transition:opacity .2s,transform .2s}
+.style-body{padding:18px;display:flex;flex-direction:column;flex:1;text-align:left}
+.booking-page .style-choice b{font-size:21px;line-height:1.3;margin:0 0 12px;color:#fff}
+.booking-page .style-choice small{font-size:14px;color:#c4c4bf;line-height:1.8;display:block}
+.style-pick{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #ffffff20;padding-top:12px;margin-top:auto;color:#ead294;font-size:14px;font-weight:600}
+.style-body small{padding-bottom:18px}
+.booking-page .style-choice.selected{border-color:var(--accent);background:#1d1710;box-shadow:inset 0 0 0 1px #efae4255}
+.booking-page .style-choice.selected small{color:#e0dacb}.style-choice.selected .style-selected{opacity:1;transform:scale(1)}
+.booking-page .upload,.booking-page #style label.field{padding:22px;margin:0}
+.booking-page #style textarea{min-height:170px}
+.booking-page input,.booking-page textarea{background:#0e0f10;border:1px solid #ffffff38;border-radius:0}
+.booking-page input:focus,.booking-page textarea:focus{border-color:var(--accent);background:#141514}
+.booking-page .upload input{background:#111214;border:1px solid #ffffff1f;padding:10px;border-radius:0}
+.booking-page .contact-card,.booking-page .payment-summary{padding:28px}
+.booking-page .payment-summary{background:var(--surface-raised);border-color:#71532e}
+.booking-page .payment-summary .eyebrow{padding-bottom:12px;border-bottom:1px solid #d1ad6040}
+.booking-page .pay-option{background:#111214;border:1px solid #ffffff33;border-radius:0;transition:background .2s,border-color .2s}
+.booking-page .pay-option:has(input:checked){background:#d1ad6010;border-color:#d1ad6099}
+.booking-page input[type=radio]{accent-color:var(--accent)}
+.booking-page .total{background:#08080855;border-radius:0;padding:14px;margin:20px 0;color:#f0d695}
+
+@media(min-width:761px) and (max-width:1050px){
+ .booking-page .theatre .barber-copy{padding-left:20px}.barber-details{padding:24px}.detail-heading h2{font-size:27px}.booking-page .theatre .description{font-size:16px}
+ .booking-page .calendar,.booking-page .time-panel{padding:20px}.booking-page .calendar-layout{gap:18px}
+ .booking-page .style-options{grid-template-columns:repeat(2,1fr)}.style-photo{height:270px}
+}
+@media(max-width:760px){
+ .booking-page .theatre{display:block;height:auto;min-height:0;padding:285px 0 28px}
+ .booking-page .theatre .portrait-area{width:100%;height:340px;top:-30px;left:0}
+ .booking-page .theatre .portrait-card img{object-fit:contain;object-position:center bottom}
+ .booking-page .theatre .hero-word{max-width:100%;left:50%;top:94px;font-size:38vw}
+ .booking-page .theatre .hero-person{position:relative;left:auto;bottom:auto;max-width:none;width:100%;margin:0 0 16px}
+ .booking-page .theatre .barber-copy{padding:0;width:100%;max-width:none;position:relative;transform:none;bottom:auto;right:auto}
+ .barber-details{padding:22px 20px;border-radius:0}.detail-heading{margin-bottom:16px;padding-bottom:14px}.detail-heading h2{font-size:25px}
+ .booking-page .theatre .description{font-size:16px;line-height:1.8}.booking-page .theatre .chips span{font-size:13px}.booking-page .theatre .availability{font-size:13px}
+ .booking-page .theatre .barber-tabs{gap:7px}.booking-page .theatre .barber-tabs button{font-size:13px}.booking-page .theatre .barber-tabs small{font-size:11px}
+ .booking-page .calendar-layout{grid-template-columns:1fr;gap:18px}.booking-page .calendar,.booking-page .time-panel{padding:20px 16px}
+ .booking-page .days{gap:4px}.booking-page .days button{min-height:40px;height:42px}.booking-page .calendar .weekdays span{font-size:11px}
+ .booking-page .style-options{grid-template-columns:repeat(2,1fr);gap:12px}
+ .style-photo{height:195px}.style-body{padding:14px}.booking-page .style-choice b{font-size:18px}.booking-page .style-choice small{font-size:13px;line-height:1.7}.style-pick{font-size:13px}
+ .style-source{font-size:12px;margin-bottom:16px}.booking-page .upload,.booking-page #style label.field,.booking-page .contact-card,.booking-page .payment-summary{padding:20px}
+ .booking-page .time-panel .step-summary{font-size:13px}.booking-page .legend{font-size:12px}
+}
+@media(max-width:380px){.booking-page .style-options{grid-template-columns:1fr}.style-photo{height:260px}.booking-page .theatre .barber-tabs button{font-size:12px}.booking-page .calendar{padding:18px 12px}}
+@media(prefers-reduced-motion:reduce){
+ .booking-page *, .booking-page *:before{animation:none!important;transition:none!important}
+ .booking-page .primary:hover:not(:disabled),.booking-page button:active:not(:disabled),.booking-page .style-choice:hover,.booking-page .style-choice:hover .style-photo img{transform:none}
+ .barber-details:before,.booking-page .style-choice:before{background:none}
+}
+/* Step 01 — the picker leads, the commit button follows it. */
+.booking-page .barber-picker{margin-top:20px}
+.booking-page .picker-label{display:block;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:#bdb6a8;margin-bottom:10px}
+.booking-page .theatre .barber-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:0}
+.booking-page .theatre .barber-tabs button{position:relative;border:1px solid #ffffff25;border-radius:0;background:#171819;padding:12px 6px;font-size:14px;line-height:1.5;min-height:62px}
+.booking-page .theatre .barber-tabs button:is([aria-pressed=true],[aria-checked=true]){background:#d1ad6015;border-color:#d1ad6099;color:#f0d695;box-shadow:0 0 0 1px #d1ad6044}
+.booking-page .theatre .barber-tabs button:is([aria-pressed=true],[aria-checked=true]):after{content:'✓';position:absolute;top:5px;right:8px;font-size:11px;color:var(--accent)}
+/* The commit zone keeps "what you picked" and "what happens next" together. */
+.booking-page .step-commit{margin-top:18px}
+.booking-page .commit-line{margin:0 0 10px;font-size:13px;color:#bdb6a8}
+.booking-page .commit-line b{color:#f0d695;font-weight:700}
+.booking-page #choose-barber,.booking-page #to-style{margin-top:0}
+/* Step 02 — one loud confirmation instead of three quiet ones. */
+.booking-confirm{display:flex;align-items:center;gap:14px;background:#120f0c;border:1px solid var(--card-border);border-radius:var(--card-radius);padding:14px 16px;margin-bottom:14px;font-size:14px;line-height:1.7;color:#bdb6a8}
+.booking-confirm.is-set{background:#1d1710;border-color:var(--accent);color:#ece7d8}
+.booking-confirm img{width:52px;height:62px;object-fit:cover;object-position:50% 12%;background:#2a2b2d;border-radius:0;flex:none}
+.confirm-body{display:flex;flex-direction:column;gap:3px;min-width:0}
+.confirm-body small{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:#d1ad60}
+.confirm-body strong{font-size:23px;color:#fff;line-height:1.3;letter-spacing:.5px}
+.confirm-body span{font-size:13px;color:#c9c4b8}
+.confirm-body .confirm-meta{font-size:12px;color:#9d968a}
+.confirm-check{margin-left:auto;flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#0b0a09;font-size:15px;font-weight:700}
+/* Times grouped by part of day; nothing unavailable is drawn at all. */
+.time-group{margin:18px 0 0}
+.time-group-label{display:flex;align-items:baseline;gap:8px;margin:0 0 8px;font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:#bdb6a8}
+.time-group-label span{font-size:12px;color:#8e887d;letter-spacing:0}
+.time-full-note{margin:16px 0 0;font-size:12px;color:#8e887d}
+/* Every day states how busy it is, so nobody picks a dead date. */
+.booking-page .days button{position:relative}
+.booking-page .days button.today:after{display:none}
+.day-dot{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:transparent}
+.booking-page .days button.day-open .day-dot{background:#7fb77e}
+.booking-page .days button.day-few .day-dot{background:var(--accent)}
+.booking-page .days button.day-full .day-dot{background:#6f6f6f}
+.booking-page .days button.day-off{text-decoration:line-through;color:#cf9c65}
+.booking-page .days button.selected .day-dot{background:#0b0a09}
+.booking-page .days button:disabled .day-dot{display:none}
+.booking-page .legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12px}
+.booking-page .legend .key{display:inline-flex;align-items:center;gap:7px}
+.booking-page .legend .key:before{content:'';width:7px;height:7px;border-radius:50%;flex:none}
+.booking-page .legend .key-open:before{background:#7fb77e}
+.booking-page .legend .key-few:before{background:var(--accent)}
+.booking-page .legend .key-full:before{background:#6f6f6f}
+.booking-page .legend .key-away:before{background:#cf9c65}
+@media(max-width:760px){
+ /* Only step 02 is long enough for a sticky commit bar to have room to travel. */
+ .booking-page .time-panel .step-commit{position:sticky;bottom:0;z-index:8;margin:18px -16px -20px;padding:14px 16px calc(20px + env(safe-area-inset-bottom));background:var(--surface);border-radius:0 0 var(--card-radius) var(--card-radius)}
+ .booking-page .time-panel .step-commit:before{content:'';position:absolute;left:0;right:0;bottom:100%;height:26px;background:linear-gradient(#13131300,var(--surface));pointer-events:none}
+ .booking-page .barber-picker{margin-top:18px}
+ .booking-page .step-commit{margin-top:20px}
+ .booking-confirm{margin-bottom:12px;padding:12px 14px;gap:12px}
+ .booking-confirm img{width:44px;height:52px}
+ .confirm-body strong{font-size:21px}
+ .time-group-label{font-size:12px}
+}
+/* Confirmation reads like a receipt you were handed, not a paragraph of text. */
+.booking-page .success{padding:34px}
+.success-mark{display:block;width:54px;height:54px;margin:0 0 20px;overflow:visible}
+.success-mark .mark-ring{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:145;stroke-dashoffset:145;animation:mark-ring .5s ease-out .05s forwards}
+.success-mark .mark-tick{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:square;stroke-dasharray:36;stroke-dashoffset:36;animation:mark-tick .34s ease-out .46s forwards}
+@keyframes mark-ring{to{stroke-dashoffset:0}}
+@keyframes mark-tick{to{stroke-dashoffset:0}}
+.booking-page .success h2{margin:0 0 24px}
+.receipt{border:1px solid var(--line);background:#101010;margin:0 0 18px}
+.receipt-head{display:flex;align-items:center;gap:16px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.receipt-head img{width:52px;height:60px;object-fit:cover;object-position:50% 12%;background:#1d1d1d;flex:none}
+.receipt-head strong{display:block;font-size:20px;color:#fff;line-height:1.4}
+.receipt-head span{font-size:14px;color:var(--muted)}
+.receipt-stamp{margin-left:auto;align-self:flex-start;flex:none;font-size:11px;letter-spacing:1.6px;color:var(--accent);border:1px solid #d1ad6066;padding:5px 9px}
+.receipt-rows{margin:0;padding:6px 20px}
+.receipt-rows>div{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:11px 0;border-bottom:1px solid #ffffff12}
+.receipt-rows>div:last-child{border-bottom:0}
+.receipt-rows dt{font-size:13px;color:var(--muted);margin:0}
+.receipt-rows dd{margin:0;font-size:15px;color:var(--ink);text-align:right}
+.receipt-code{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 20px;border-top:1px solid var(--line);background:#161310}
+.receipt-code small{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.receipt-code strong{font-size:21px;letter-spacing:4px;color:var(--accent);font-variant-numeric:tabular-nums}
+.booking-page .success .actions{flex-wrap:wrap;gap:12px;justify-content:flex-start}
+.save-note{margin:14px 0 0;font-size:13px;line-height:1.7;color:var(--accent);min-height:1px}
+.save-note:empty{margin:0}
+@media(max-width:760px){
+ .booking-page .success{padding:22px 18px}
+ .success-mark{width:46px;height:46px;margin-bottom:16px}
+ .receipt-head{padding:14px;gap:12px}.receipt-head img{width:44px;height:52px}.receipt-head strong{font-size:17px}
+ .receipt-stamp{font-size:10px;padding:4px 7px}
+ .receipt-rows{padding:4px 14px}.receipt-rows dd{font-size:14px}
+ .receipt-code{padding:14px}.receipt-code strong{font-size:18px;letter-spacing:3px}
+ .booking-page .success .actions>*{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ .success-mark .mark-ring,.success-mark .mark-tick{animation:none;stroke-dashoffset:0}
+}

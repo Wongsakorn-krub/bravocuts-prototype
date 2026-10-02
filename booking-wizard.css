@@ -1,0 +1,66 @@
+/* Booking is a sequence of pages. Only the active panel participates in layout. */
+.booking-page{--line:#ffffff1c;--muted:#aaa49b}
+.booking-page .wrap{width:90%;max-width:1200px}
+.booking-page .journey{position:relative;top:auto;background:none;border-top:0;margin:22px 0 0;gap:24px}
+.booking-page .journey button{display:flex;align-items:center;gap:12px;min-height:62px;padding:12px 0;text-align:left;background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);font-size:11px;line-height:1.6}
+.booking-page .journey button b{font-weight:500}
+.booking-page .journey button span{font-size:10px;font-variant-numeric:tabular-nums}
+.booking-page .journey button.active{border-color:var(--accent);color:var(--ink)}
+.booking-page .journey button.active span,.booking-page .journey button.complete span{color:var(--accent)}
+.booking-page .journey button:disabled{opacity:.35}
+.booking-page .journey button.active:disabled{opacity:1}
+.wizard-toolbar{display:flex;align-items:center;gap:24px;min-height:64px;font-size:11px;color:var(--muted)}
+.wizard-toolbar button{background:none;border:0;padding:12px 0;color:var(--ink);min-height:44px}
+#wizard-count{margin-left:auto;letter-spacing:2px;white-space:nowrap}
+.wizard-status{margin:0;color:var(--accent);font-size:12px;line-height:1.8}
+.wizard-status:not(:empty){padding:12px 0 20px}
+.booking-page .booking-section{padding:18px 0 60px;border:0;min-height:calc(100svh - 285px);outline:none}
+.booking-page .section-top{margin-bottom:30px}
+.booking-page .section-top .eyebrow,.booking-page .mini-step,.booking-page .hero-kicker,.booking-page .hero-bottom-line,.booking-page .hero-person>.eyebrow{display:none}
+.booking-page .section-top h2{font-size:clamp(25px,3vw,36px);letter-spacing:-.8px;font-weight:500}
+.booking-page .section-top p{font-size:12px;max-width:370px}
+.booking-page .theatre{width:100%;margin:0;height:calc(100svh - 265px);min-height:590px;max-height:820px;background:none}
+.booking-page .theatre:before{display:none}
+.booking-page .theatre:after{background:linear-gradient(90deg,transparent 40%,#0b0a09 69%)}
+.booking-page .theatre .hero-word{font-size:clamp(130px,23vw,320px);left:33%;top:27%;opacity:.12;letter-spacing:-8px}
+.booking-page .theatre .portrait-area{width:70%;left:-6%;top:-4%;height:105%}
+.booking-page .theatre .portrait-card{height:110%;bottom:-10%}
+.booking-page .theatre .hero-person{left:3%;bottom:9%;max-width:40%}
+.booking-page .hero-person h1{font-size:clamp(85px,9vw,135px);margin:10px 0 22px}
+.booking-page .theatre .barber-copy{right:0;bottom:50%;transform:translateY(50%);width:32%;max-width:365px;min-width:260px}
+.booking-page .theatre .description{font-size:13px;line-height:1.9;text-shadow:none}
+.booking-page .theatre .chips span{border:0;border-bottom:1px solid #efae4244;padding:5px 0;background:none}
+.booking-page .theatre .chips{gap:20px}
+.booking-page .theatre .date-check{border:0;margin-top:16px;padding-top:0}
+.booking-page .theatre .availability{background:none}
+.booking-page #other-date{display:none}
+.booking-page .theatre{outline:none}
+.booking-page h1:focus,.booking-page h2:focus{outline:none}
+.booking-page .primary{border-radius:0;box-shadow:none}
+.booking-page .calendar{background:none;border:0;padding:12px 22px 12px 0}
+.booking-page .calendar-layout{gap:7%;grid-template-columns:1fr 1fr}
+.booking-page .days button{border-radius:0;height:48px}
+.booking-page .time-panel{border-left:1px solid var(--line);padding-left:35px}
+.booking-page .time-grid{position:relative;grid-template-columns:repeat(4,1fr);padding:3px}
+.booking-page .time-grid button{background:none;border-color:var(--line);border-radius:0}
+.booking-page .time-grid button.selected{background:var(--accent);border-color:var(--accent)}
+.booking-page .day-display{font-size:21px}
+.booking-page .step-summary{border:0;padding:0;color:var(--muted);font-size:11px}
+.booking-page .style-choice{background:none;border-color:var(--line);border-radius:0;min-height:155px;transform:none}
+.booking-page .style-choice.selected{background:#efae420b;border-color:var(--accent);color:var(--ink)}
+.booking-page .style-choice.selected .style-mark{color:var(--accent)}
+.booking-page .style-choice.selected small{color:var(--muted)}
+.booking-page .style-choice b{font-size:16px}
+.booking-page .upload{background:none;border-color:#ffffff30;border-radius:0}
+.booking-page input,.booking-page textarea{background:#ffffff03;border-radius:0}
+.booking-page .payment-summary{background:#ffffff03;border:0;border-radius:0;color:var(--ink);padding:28px}
+.booking-page .summary-row{border-color:var(--line)}
+.booking-page .payment-summary .subtle{color:var(--muted)}
+.booking-page .pay-option{border-radius:0}
+.booking-page .success{background:#efae4207;border:1px solid #efae4240;border-radius:0}
+.booking-page footer{border-color:var(--line)}
+@media(max-width:1000px) and (min-width:761px){.booking-page .theatre .barber-copy{width:37%;min-width:240px}.booking-page .theatre .portrait-area{left:-12%;width:80%}.booking-page .calendar-layout{gap:3%}.booking-page .time-panel{padding-left:20px}}
+@media(max-width:760px){
+ .booking-page .wrap{width:88%}.booking-page .journey{gap:12px;margin-top:12px}.booking-page .journey button{display:block;min-height:63px;padding:9px 0;font-size:9px}.booking-page .journey button span{display:block;font-size:10px}.booking-page .journey button b{display:block;margin-top:3px}.wizard-toolbar{min-height:57px;gap:15px;font-size:10px}.booking-page .theatre{height:auto;min-height:0;max-height:none;padding:305px 0 35px}.booking-page .theatre .portrait-area{height:350px;width:100%;left:0;top:-27px}.booking-page .theatre .portrait-card{height:115%;bottom:-14%}.booking-page .theatre .hero-word{font-size:38vw;left:50%;top:95px;letter-spacing:-5px}.booking-page .theatre:after{background:linear-gradient(0deg,#0b0a09 0%,transparent 65%)}.booking-page .theatre .hero-person{position:relative;left:0;bottom:auto;width:100%;max-width:none;margin:0}.booking-page .hero-person h1{font-size:70px;margin:0}.booking-page .theatre .barber-copy{position:relative;right:auto;bottom:auto;transform:none;width:100%;max-width:none;min-width:0;padding:15px 0 0}.booking-page .theatre .description{font-size:12px;margin-bottom:0}.booking-page .theatre .chips{margin:9px 0}.booking-page .theatre .subtle{margin:8px 0;font-size:8px}.booking-page .theatre .date-check{margin:8px 0 0;font-size:10px}.booking-page .theatre .availability{font-size:10px;margin:0 0 13px}.booking-page .theatre .barber-tabs{margin-top:8px}.booking-page .booking-section{padding:12px 0 35px;min-height:calc(100svh - 260px)}.booking-page .section-top h2{font-size:27px}.booking-page .section-top{margin-bottom:24px}.booking-page .section-top p{font-size:11px;margin-bottom:0}.booking-page .calendar-layout{grid-template-columns:1fr;gap:24px}.booking-page .calendar{padding:0}.booking-page .days button{height:42px}.booking-page .time-panel{padding:20px 0 0;border-left:0;border-top:1px solid var(--line)}.booking-page .style-choice{min-height:145px;padding:15px}.booking-page .two-col{grid-template-columns:1fr}.booking-page .style-choice b{font-size:14px}.booking-page .payment-summary{padding:22px}.booking-page .actions .primary{width:100%}.booking-page .success{padding:23px}
+}
+@media(prefers-reduced-motion:reduce){.booking-page *{scroll-behavior:auto}}

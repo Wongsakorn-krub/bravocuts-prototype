@@ -1,0 +1,153 @@
+/* Shared type scale, spacing and black/gold palette. Loaded after page layouts. */
+:root,.booking-page{
+ --paper:#080808;--ink:#f5f2eb;--muted:#bbb7ad;--line:#ffffff24;
+ --accent:#d1ad60;--green:#ddc77b;
+ --text-sm:14px;--text-xs:12px;--text-base:16px;
+}
+body{background:var(--paper);font-size:var(--text-base);line-height:1.65}
+header{height:80px;background:#080808f5;border-color:var(--line)}
+nav{font-size:14px;gap:28px}nav a{color:var(--muted)}
+.head-right select{font-size:14px;background:#171717;min-height:44px}
+.edition{font-size:11px;letter-spacing:1px;color:var(--muted)}
+h2{font-size:clamp(30px,3.2vw,42px);letter-spacing:0;line-height:1.4;font-weight:600}
+h3{line-height:1.5}.eyebrow{font-size:12px;letter-spacing:1.6px;color:var(--accent)}
+.muted,.subtle{color:var(--muted)}.subtle{font-size:12px;line-height:1.7}
+.primary,.secondary{font-size:16px;line-height:1.5;min-height:50px;padding:14px 22px;gap:20px}
+.primary,.payment-summary .primary{background:var(--accent);border-color:var(--accent);color:#080808}
+.primary:hover{background:#ead095;box-shadow:none}
+.secondary{border-color:#ffffff35}.secondary:hover{border-color:var(--accent)}
+.round{background:#111;border-color:#d1ad6066;color:var(--accent);min-width:44px;min-height:44px}
+.round:hover{background:var(--accent);color:#080808}
+input,textarea,select{font-size:16px;background:#131313;border-color:#ffffff30}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline-color:#ebcf70}
+label.field,.form-grid label{font-size:14px;line-height:1.65}
+.section-top{margin-bottom:24px}.section-top p{font-size:16px;line-height:1.75}
+.actions{margin-top:24px}.error{font-size:14px}
+footer{background:#080808;color:var(--muted);font-size:12px;line-height:1.7;padding:22px 5%;border-color:var(--line)}
+/* Homepage: readable copy and tighter rhythm between the shop and its work. */
+.shop-hero{background:radial-gradient(ellipse at 36% 48%,#d1ad6012,transparent 62%);min-height:600px;height:calc(100svh - 80px);max-height:880px}
+.shop-ghost{color:#d1ad6018}.shop-front{filter:drop-shadow(0 0 45px #d1ad6015)}
+.shop-kicker{font-size:12px;letter-spacing:1.2px;color:var(--muted);top:22px}
+/* Bounded by the bottom strip instead of floating at a fixed %, so the facts row
+   can never land on top of it on a short window. 5% matches the kicker and strip. */
+.shop-hero-copy{top:0;bottom:78px;width:38%;right:5%;display:flex;flex-direction:column;justify-content:center}
+.shop-hero-copy .eyebrow{font-size:12px}
+.shop-hero-copy h1{font-size:clamp(64px,7vw,106px);margin:20px 0}
+.shop-hero-copy>p:not(.eyebrow){font-size:18px;line-height:1.8;max-width:510px;margin:18px 0 24px;color:var(--muted)}
+.shop-work-link{font-size:16px;border-color:#d1ad6066;margin-top:9px;padding:8px 0}
+.shop-facts{font-size:12px;color:var(--muted);letter-spacing:0;margin-top:22px;padding-top:16px;gap:14px;flex-wrap:wrap}
+.shop-hero-bottom{font-size:11px;letter-spacing:1px;color:var(--muted)}
+.shop-story{gap:6%;padding:64px 0 48px}.story-photo img{height:560px}
+.story-photo>span{font-size:12px;background:#080808dc;color:#eedca0;letter-spacing:1px}
+.story-copy h2{font-size:clamp(30px,3vw,40px);line-height:1.5;letter-spacing:0}
+.story-copy>p:not(.eyebrow){font-size:17px;line-height:1.8;color:var(--muted)}
+.story-detail{margin-top:16px;padding-top:12px;gap:18px}.story-detail>span{font-size:14px}.story-detail h3{font-size:19px}.story-detail p{font-size:16px;color:var(--muted);line-height:1.7;margin:6px 0}
+.home-page .portfolio{padding:40px 0 56px}.home-page .portfolio h2{font-size:clamp(30px,3.2vw,42px)}
+.loop-toolbar{margin-bottom:16px}.loop-toolbar>span{font-size:12px;letter-spacing:1px;color:var(--muted)}.loop-toolbar button{font-size:14px}
+.loop-card,.loop-card .gallery-caption{background:#141414}.loop-card .gallery-caption{font-size:12px;color:#e2d4a8;padding:13px 16px}
+.home-page .reviews{margin-top:44px}.review{padding:22px 0}.review .eyebrow{font-size:12px}.review p{font-size:19px;color:var(--ink);line-height:1.8}.review small{font-size:13px;color:var(--muted)}
+/* The closing panel runs dark like the rest of the site: white headline, gold
+   accents, gold CTA. White on the gold fill would have sat at ~1.9:1. */
+.visit{background:#0e0e0e;color:var(--ink);padding:40px 5%;border-top:1px solid var(--line)}
+.visit .eyebrow{color:var(--accent)}
+.visit>div>p{color:var(--muted)}
+.visit a[href^=tel]{color:var(--accent)}
+.visit .primary,.visit .primary:hover{background:var(--accent);color:#080808;border-color:var(--accent)}
+.visit .primary:hover{background:#ead095}
+.visit:after{color:var(--ink)}
+/* Booking: larger controls; the step content uses the available width. */
+.booking-page .wrap{width:92%;max-width:1320px}
+.booking-page .journey{margin-top:10px;gap:20px}
+.booking-page .journey button{font-size:15px;min-height:60px;gap:12px;padding:10px 0;line-height:1.5}
+.booking-page .journey button span{font-size:13px}.booking-page .journey button b{font-weight:500}
+.booking-page .journey button:disabled{opacity:.6}
+.wizard-toolbar{min-height:52px;font-size:14px;gap:20px}.wizard-toolbar button{font-size:14px}
+.wizard-status{font-size:14px}
+.booking-page .booking-section{padding:8px 0 40px;min-height:0}
+.booking-page .section-top{margin-bottom:20px;align-items:center}
+.booking-page .section-top h2{font-size:clamp(30px,3vw,40px);font-weight:600;letter-spacing:0}
+.booking-page .section-top p{font-size:15px;max-width:440px;line-height:1.7}
+.booking-page .section-top small{font-size:13px}
+.booking-page .theatre{height:calc(100svh - 210px);min-height:590px;max-height:760px;background:none}
+.booking-page .theatre:after{background:linear-gradient(90deg,transparent 35%,#080808 64%)}
+.booking-page .theatre .portrait-area{width:65%;left:-7%}
+.booking-page .theatre .barber-copy{width:40%;max-width:500px;min-width:0;right:0;text-shadow:none}
+.booking-page .theatre .hero-word{color:var(--accent)}
+.booking-page .theatre .description{font-size:18px;line-height:1.8;color:#dfdbd1;max-width:none}
+.booking-page .theatre .chips{margin:14px 0;gap:18px}.booking-page .theatre .chips span{font-size:14px;color:#e6d59e;border-color:#d1ad6066}
+.booking-page .theatre .subtle{font-size:12px;color:var(--muted);margin:12px 0}
+.booking-page .theatre .date-check{font-size:14px;color:var(--muted);margin-top:16px;gap:20px}
+.booking-page .theatre .availability{font-size:14px;line-height:1.7;color:#ddc77b;margin:4px 0 16px}
+.booking-page .theatre .availability.off{color:#efd791}
+.booking-page .theatre .primary{font-size:17px;min-height:54px}
+.booking-page .theatre .barber-tabs button{font-size:15px;color:var(--muted);border-color:#ffffff30;padding:12px 4px}
+.booking-page .theatre .barber-tabs button[aria-pressed=true]{color:var(--accent);border-color:var(--accent)}
+.booking-page .theatre .barber-tabs small{font-size:12px;line-height:1.5;margin-top:4px}
+.booking-page .theatre .rotation-hint span{font-size:14px;color:var(--accent)}
+.booking-page .theatre .hero-person{left:2%;bottom:8%}.booking-page .hero-person h1{font-size:clamp(80px,9vw,130px)}
+.booking-page .calendar-layout{gap:4%}.booking-page .calendar{padding:8px 16px 8px 0}
+.month-heading{margin-bottom:16px}.month-heading h3{font-size:22px}
+.weekdays span,.calendar .weekdays span{font-size:13px}.days button{font-size:17px}
+.legend{font-size:13px;gap:18px;margin-top:14px}
+.booking-page .time-panel{padding-left:28px}.booking-page .day-display{font-size:26px;line-height:1.5;margin:8px 0}
+.time-panel>.eyebrow{font-size:13px}.time-caption{font-size:13px;margin-top:18px}
+.booking-page .time-grid{margin:14px 0;max-height:245px;scrollbar-color:#a98b36 #111}
+.booking-page .time-grid button{font-size:16px;min-height:46px}
+.booking-page .time-grid button.selected,.booking-page .days button.selected{background:var(--accent);color:#080808}
+.booking-page .step-summary{font-size:14px;margin:16px 0;line-height:1.7}
+.booking-page .style-choice{min-height:165px;padding:20px}.booking-page .style-choice b{font-size:20px;font-weight:600;line-height:1.4;margin:10px 0}
+.booking-page .style-choice small{font-size:14px;line-height:1.7}.booking-page .style-choice .style-mark{color:var(--accent);font-size:24px}
+.booking-page .style-choice.selected{background:#d1ad6010;border-color:var(--accent)}.booking-page .style-choice.selected .style-mark{color:var(--accent)}
+.booking-page .upload{padding:20px}.upload label{font-size:16px}.upload small{font-size:13px}.upload input{font-size:14px}
+.booking-page .payment-summary{background:#151515;padding:28px;color:var(--ink)}
+.payment-summary h3{font-size:38px}.summary-row,.pay-option{font-size:15px}.payment-summary .subtle{font-size:13px;color:var(--muted)}
+.booking-page .success{background:#d1ad600a;border-color:#d1ad6066}
+/* Studio desk shares the same neutral surfaces and readable labels. */
+.desk-page .editor,.desk-column{background:#141414;border-color:var(--line)}
+.desk-page .editor select{background:#191919}.desk-person h3{font-size:18px;color:var(--ink)}
+.desk-person small,.appointment small{font-size:13px}.appointment{background:#d1ad6012;color:var(--ink);border-color:var(--accent)}
+.appointment.blocked{background:#26231a;border-color:#99844a}.appointment b{font-size:17px}.schedule-note,.empty{font-size:14px}
+@media(max-width:1050px){
+ .edition{display:none}.shop-hero-copy{width:40%;top:18%}.shop-hero-copy>p:not(.eyebrow){font-size:16px}.shop-front{width:56%}.shop-facts{font-size:12px}
+ .shop-story{gap:5%}.story-copy>p:not(.eyebrow){font-size:16px}.story-photo img{height:530px}
+ .booking-page .theatre .barber-copy{width:43%}.booking-page .theatre .description{font-size:16px}
+ .booking-page .journey{gap:12px}.booking-page .journey button{font-size:14px}.booking-page .time-panel{padding-left:20px}
+ .booking-page .calendar-layout{gap:3%}.booking-page .style-choice{padding:16px}.booking-page .style-choice b{font-size:18px}
+}
+@media(max-width:760px){
+ header{height:72px;padding:0 5%;gap:12px}nav{font-size:13px;gap:14px}.head-right{gap:0}.head-right select{font-size:13px;padding:8px}.logo{width:87px;flex-shrink:0}
+ nav a:nth-child(2){display:none}.wrap,.booking-page .wrap{width:90%}
+ .primary,.secondary{font-size:16px;padding:13px 18px}.eyebrow{font-size:12px}
+ .shop-hero{width:calc(100% / .9);margin-left:calc(-100% / 18);height:auto;min-height:0;max-height:none;padding:48px 5% 48px}
+ .shop-kicker{font-size:10px;top:16px;left:5%;right:5%;letter-spacing:.4px}.shop-kicker span:last-child{max-width:145px}
+ .shop-front{width:100%;height:360px;margin-bottom:-12px}.shop-hero-copy{width:100%;top:auto;bottom:auto;right:auto;margin-top:0;display:block}
+ .shop-hero-copy h1{font-size:64px;margin:16px 0}.shop-hero-copy>p:not(.eyebrow){font-size:16px;line-height:1.8;margin:16px 0 20px}
+ .shop-facts{font-size:12px;gap:10px;margin-top:18px;padding-top:14px}.shop-hero-bottom{font-size:9px;letter-spacing:0;bottom:14px}
+ .shop-story{padding:36px 0;gap:24px}.story-photo img{height:390px}.story-copy h2{font-size:30px}.story-copy>p:not(.eyebrow),.story-detail p{font-size:16px}
+ .home-page .portfolio{padding:24px 0 36px}.home-page .portfolio h2{font-size:30px}.loop-toolbar>span{font-size:11px;max-width:180px}.loop-toolbar .secondary{font-size:13px;padding:10px 12px}
+ .home-page .reviews{margin-top:30px}.review p{font-size:17px}.visit{padding:30px 5%}.visit h2{font-size:46px}footer{font-size:12px;padding:20px 5%}
+ .booking-page .journey{margin-top:8px;gap:10px}.booking-page .journey button{font-size:12px;padding:8px 0;min-height:70px;line-height:1.5}.booking-page .journey button span{font-size:12px}.booking-page .journey button b{margin-top:2px;overflow-wrap:anywhere}
+ .wizard-toolbar{min-height:48px;gap:12px;font-size:13px}.wizard-toolbar button{font-size:14px}#wizard-count{font-size:12px;letter-spacing:1px}
+ .booking-page .theatre{height:auto;min-height:0;max-height:none;padding:248px 0 28px}
+ .booking-page .theatre:after{background:linear-gradient(0deg,#080808 0%,transparent 65%)}
+ .booking-page .theatre .portrait-area{width:100%;height:300px;left:0;top:-32px}
+ .booking-page .theatre .hero-word{font-size:38vw;top:75px;left:50%}
+ .booking-page .theatre .hero-person{left:0;bottom:auto;width:100%}.booking-page .hero-person h1{font-size:70px;margin:0}
+ .booking-page .theatre .barber-copy{width:100%;max-width:none;position:relative;transform:none;bottom:auto;right:auto;padding-top:12px}
+ .booking-page .theatre .description{font-size:16px;line-height:1.75;margin:0 0 10px}.booking-page .theatre .chips{gap:14px;margin:10px 0}
+ .booking-page .theatre .chips span{font-size:13px}.booking-page .theatre .subtle{font-size:12px;margin:8px 0}
+ .booking-page .theatre .date-check{font-size:14px;margin-top:8px}.booking-page .theatre .availability{font-size:14px;margin:0 0 14px}
+ .booking-page .theatre .primary{font-size:16px;padding:14px 18px}.booking-page .theatre .barber-tabs button{font-size:14px}.booking-page .theatre .barber-tabs small{font-size:12px}
+ .booking-page .booking-section{padding:6px 0 30px;min-height:0}.booking-page .section-top{margin-bottom:20px}.booking-page .section-top h2{font-size:30px}.booking-page .section-top p{font-size:15px;margin-top:12px}
+ .booking-page .calendar-layout{gap:20px}.booking-page .calendar{padding:0}.booking-page .time-panel{padding:18px 0 0}
+ .weekdays span,.calendar .weekdays span{font-size:12px}.days button{font-size:16px}.booking-page .days button{height:44px}.month-heading h3{font-size:21px}
+ .booking-page .day-display{font-size:23px}.booking-page .time-grid button{font-size:15px}.time-caption{font-size:12px}.booking-page .step-summary{font-size:14px}
+ .booking-page .style-choice{padding:15px;min-height:160px}.booking-page .style-choice b{font-size:18px}.booking-page .style-choice small{font-size:14px}
+ .booking-page .two-col{gap:20px}.booking-page .payment-summary{padding:22px}.booking-page .upload{padding:16px}
+ .desk-person h3{font-size:18px}.desk-page .form-grid label{font-size:14px}
+}
+@media(max-width:360px){
+ nav{font-size:12px;gap:10px}.logo{width:78px;font-size:20px}.booking-page .journey{gap:7px}.booking-page .journey button{font-size:11px}
+ .booking-page .theatre .barber-tabs button{font-size:13px}.booking-page .time-grid{grid-template-columns:repeat(3,1fr)}
+ .shop-front{height:320px}.shop-hero-copy h1{font-size:56px}.booking-page .style-options{grid-template-columns:1fr}
+}

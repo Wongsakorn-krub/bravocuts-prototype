@@ -1,0 +1,32 @@
+/* One interaction language for the whole site: a shimmer on intent, a restrained
+   lift, and a crisp press. Loaded by both index.html and booking.html, so the home
+   page and the booking flow respond identically. Kept formal on purpose — small
+   travel, tight timings, no soft glows. */
+:is(.primary,.secondary,.round,.shop-work-link,.days button,.time-grid button,.barber-tabs button){position:relative;overflow:hidden;isolation:isolate;transition:transform .18s,background .18s,border-color .18s,box-shadow .18s,color .18s}
+.primary:before{content:'';position:absolute;inset:-50% auto -50% -65%;width:45%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,#ffffff6e,transparent);pointer-events:none}
+.primary:focus-visible:before{animation:button-shine .75s ease-out}
+button:active:not(:disabled),a.primary:active{transform:scale(.985)}
+.click-wave{position:absolute;width:22px;height:22px;border:2px solid currentColor;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);animation:click-wave .55s ease-out forwards;opacity:.4;z-index:5}
+.loop-card{transition:transform .25s}
+@media(hover:hover){
+ .primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 18px #d1ad6030}
+ .primary:hover:not(:disabled):before{animation:button-shine .75s ease-out}
+ :is(.secondary,.round,.days button,.time-grid button):hover:not(:disabled){transform:translateY(-1px);border-color:var(--accent);box-shadow:0 4px 12px #0004}
+ .shop-work-link:hover{color:#ffc567;border-color:var(--accent)}
+ .loop-card:hover{transform:translateY(-3px)}
+ .barber-tabs button:hover{background:#d1ad6012;border-color:#d1ad6077}
+ .style-choice:hover{transform:translateY(-3px);border-color:#d1ad6099;box-shadow:0 10px 20px #0006}
+ .style-choice:hover .style-photo img{transform:scale(1.04)}
+}
+/* The shopfront re-arrives on every scroll back into view. Only the "fully out of
+   frame" state is special-cased, so if the observer never runs the photo still
+   shows with its normal load animation rather than staying blank. */
+.shop-front.replayable.is-away{opacity:0;animation:none}
+@keyframes button-shine{to{left:140%}}
+@keyframes click-wave{to{transform:translate(-50%,-50%) scale(10);opacity:0}}
+@media(prefers-reduced-motion:reduce){
+ :is(.primary,.secondary,.round,.shop-work-link,.loop-card,.style-choice,.days button,.time-grid button,.barber-tabs button){transition:none}
+ .primary:before{display:none}
+ .click-wave{display:none}
+ :is(.primary,.secondary,.round,.loop-card,.style-choice):hover,button:active:not(:disabled),a.primary:active{transform:none}
+}
