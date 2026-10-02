@@ -11,3 +11,5 @@ document.addEventListener('pointerdown',event=>{
  wave.style.left=`${event.clientX-rect.left}px`;wave.style.top=`${event.clientY-rect.top}px`;
  button.append(wave);wave.addEventListener('animationend',()=>wave.remove(),{once:true});
 },{passive:true});
+// iOS Safari only paints :active on touch when some touch listener exists.
+document.addEventListener('touchstart',()=>{},{passive:true});

@@ -30,3 +30,34 @@ button:active:not(:disabled),a.primary:active{transform:scale(.985)}
  .click-wave{display:none}
  :is(.primary,.secondary,.round,.loop-card,.style-choice):hover,button:active:not(:disabled),a.primary:active{transform:none}
 }
+/* Social row: plain white marks at rest; on hover/focus/press each fills a
+   circle in its own brand colour and shows its name in a label above. */
+.social-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.social-link{position:relative;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;color:var(--ink);transition:background .2s,color .2s,transform .18s}
+.social-link svg{width:24px;height:24px}
+.social-link:after{content:attr(data-label);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translate(-50%,4px);white-space:nowrap;font-size:13px;font-weight:600;line-height:1;padding:7px 10px;border-radius:6px;color:#fff;background:var(--brand,#333);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
+.social-facebook{--brand:#1877f2}
+.social-instagram{--brand:linear-gradient(45deg,#f9a03f,#e1306c 45%,#833ab4)}
+.social-tiktok{--brand:#111;--ring:inset 2px 0 #25f4ee,inset -2px 0 #fe2c55}
+.social-maps{--brand:#ea4335}
+.social-link:is(:focus-visible,:active){z-index:2;background:var(--brand);color:#fff;box-shadow:var(--ring,none)}
+.social-link:is(:focus-visible,:active):after{opacity:1;transform:translate(-50%,0)}
+/* Hover only where a mouse exists: on phones it would stick after the tap. */
+@media(hover:hover){
+ .social-link:hover{z-index:2;background:var(--brand);color:#fff;box-shadow:var(--ring,none)}
+ .social-link:hover:after{opacity:1;transform:translate(-50%,0)}
+}
+.social-link:active{transform:scale(.94)}
+@media(max-width:760px){
+ /* section-top stacks on phones; give the row real air below the heading */
+ .section-top .social-links{margin-top:40px;margin-left:-12px} /* room for the label above, so it never covers the heading */
+}
+@media(prefers-reduced-motion:reduce){.social-link,.social-link:after{transition:none}.social-link:active{transform:none}}
+/* Nav: a gold rule that draws in under the section you are actually on. */
+.nav-book{border-bottom:0}
+#nav a{position:relative}
+#nav a:after{content:'';position:absolute;left:0;right:0;bottom:2px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .28s ease}
+#nav a[aria-current]{color:var(--ink)}
+#nav a.nav-book[aria-current]{color:var(--accent)}
+#nav a[aria-current]:after{transform:scaleX(1)}
+@media(prefers-reduced-motion:reduce){#nav a:after{transition:none}}

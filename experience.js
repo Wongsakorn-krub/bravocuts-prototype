@@ -86,10 +86,39 @@ function chrome(){
  $('#language').value=lang;
  document.body.className=location.hash==='#desk'?'desk-page':isBooking?'booking-page':'home-page';
  document.querySelector('.logo').href='./';
- $('#nav').innerHTML=`<a href="./">${L('หน้าหลัก','Home','首页','Главная')}</a><a href="./#work">${L('ผลงาน','The work','作品','Работы')}</a><a class="nav-book" href="booking.html">${L('จองคิว','Book a cut','预约','Запись')}</a>`;
+ $('#nav').innerHTML=`<a href="./" data-nav="home">${L('หน้าหลัก','Home','首页','Главная')}</a><a href="./#work" data-nav="work">${L('ผลงาน','The work','作品','Работы')}</a><a class="nav-book" href="booking.html" data-nav="book">${L('จองคิว','Book a cut','预约','Запись')}</a>`;
+ markNav();
  $('#footer').innerHTML=`<span>© BRAVOCUTS · KATHU, PHUKET</span><span>${L('ต้นแบบทดลอง • คิวและราคาเป็นข้อมูลตัวอย่าง','Booking prototype • Sample appointments & prices','预约原型 · 示例预约与价格','Прототип · Примерные записи и цены')}</span>${presentationMode?'<span></span>':'<a href="booking.html#desk">STUDIO DESK</a>'}`;
 }
-function render(){chrome();if(location.hash==='#desk'){renderDesk();return;}renderSite();}
+/* Brand links as one icon row: hand-drawn SVGs (no emoji glyphs, which phones
+   repaint in their own style). Each tints to its brand colour on hover/focus/press
+   and names itself in a small label above. */
+const SOCIALS=[
+ ['facebook','Facebook','https://www.facebook.com/share/19fXjSmFRv/','<path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z" fill="currentColor"/>'],
+ ['instagram','Instagram','https://www.instagram.com/bravocuts_phuket/','<rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/>'],
+ ['tiktok','TikTok','https://www.tiktok.com/@bravocuts','<path d="M14.2 3.5c.4 2.3 1.9 3.8 4.3 4v2.7c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v2.8a2.9 2.9 0 1 0 2 2.7V3.5z" fill="currentColor"/>'],
+ ['maps','Google Maps','https://maps.app.goo.gl/8k9Q8UDgqGBHTLLZ8','<path d="M12 21s-6.5-6.1-6.5-11a6.5 6.5 0 0 1 13 0c0 4.9-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/>']
+];
+const socialLinks=()=>`<div class="social-links" role="group" aria-label="BRAVOCUTS social">${SOCIALS.map(([id,label,href,icon])=>`<a class="social-link social-${id}" href="${href}" target="_blank" rel="noopener" aria-label="${label}" data-label="${label}"><svg viewBox="0 0 24 24" aria-hidden="true">${icon}</svg></a>`).join('')}</div>`;
+/* The nav underline marks where you are, not what we want you to click:
+   "Book a cut" on the booking page; on the home page "Home" until the work
+   section owns the middle of the screen, then "The work". */
+let navSection='home',spying=false;
+function markNav(){
+ const here=location.hash==='#desk'?null:isBooking?'book':navSection;
+ document.querySelectorAll('#nav [data-nav]').forEach(a=>{if(a.dataset.nav===here)a.setAttribute('aria-current',here==='book'?'page':'location');else a.removeAttribute('aria-current');});
+}
+/* "The work" is current while that section spans the middle of the viewport. */
+function spySections(){
+ const work=!isBooking&&document.getElementById('work');
+ const next=work&&(r=>r.top<=innerHeight/2&&r.bottom>=innerHeight/2)(work.getBoundingClientRect())?'work':'home';
+ if(next!==navSection){navSection=next;markNav();}
+}
+function watchSections(){
+ if(!spying&&!isBooking){spying=true;addEventListener('scroll',spySections,{passive:true});addEventListener('resize',spySections,{passive:true});}
+ spySections();markNav();
+}
+function render(){chrome();if(location.hash==='#desk'){renderDesk();return;}renderSite();watchSections();}
 function renderSite(){
  $('#main').innerHTML=`<div class="wrap"><div class="intro-line"><p class="eyebrow">GOOD PEOPLE. GREAT HAIRCUTS.</p><span class="prototype">BRAVOCUTS / EDITION 03</span></div>
  <section id="barbers" class="barber-hero theatre" aria-label="${titleBarber()}">
@@ -100,7 +129,7 @@ function renderSite(){
  <div id="barber-copy" class="barber-copy"></div><div class="hero-bottom-line"><span>${L('ฝีมือชัด สไตล์คุณ','CRAFTED WITH PRECISION. WORN WITH CHARACTER.','精湛技艺，独特风格','ТОЧНОСТЬ В ДЕТАЛЯХ. ВАШ ХАРАКТЕР.')}</span><span>SCROLL TO EXPLORE ↓</span></div></section>
  <div class="journey">${steps().map((s,i)=>`<a href="#${['barbers','calendar','style','payment'][i]}" class="${i===0?'active':''}"><span>0${i+1}</span>${s}</a>`).join('')}</div>
  <section id="calendar" class="booking-section"></section><section id="style" class="booking-section"></section><section id="payment" class="booking-section"></section>
- <section id="work" class="portfolio"><div class="section-top"><div><p class="eyebrow">FROM THE CHAIR</p><h2>${L('งานจริง สไตล์จริง','Good cuts. Real people.','真实作品，真实风格','Настоящие люди. Наши работы.')}</h2></div><a class="secondary" href="https://www.instagram.com/bravocuts_phuket/" target="_blank" rel="noopener">@bravocuts_phuket</a></div>
+ <section id="work" class="portfolio"><div class="section-top"><div><p class="eyebrow">FROM THE CHAIR</p><h2>${L('งานจริง สไตล์จริง','Good cuts. Real people.','真实作品，真实风格','Настоящие люди. Наши работы.')}</h2></div>${socialLinks()}</div>
  <div class="gallery">${['Ddak93HTjBb','DdVZhbGzBeW','DdOvoDFzMS6','DdF78I8ThQe'].map((id,i)=>`<a href="https://www.instagram.com/bravocuts_phuket/reel/${id}/" target="_blank" rel="noopener"><img src="assets/work-${i+1}.jpg" alt="${L('ภาพผลงานจาก Instagram ของ BRAVOCUTS','BRAVOCUTS work from Instagram','BRAVOCUTS Instagram 作品','Работа BRAVOCUTS из Instagram')} ${i+1}" loading="lazy"><span class="gallery-caption">BRAVOCUTS JOURNAL / 0${i+1}<span>→</span></span></a>`).join('')}</div>
  <div class="reviews"><article class="review"><span class="eyebrow">FACEBOOK RECOMMENDATION</span><p lang="th">“ร้านบริการดีมากช่างเอาใจใส่ลูกค้าทุกรายละเอียดจริงๆ”</p><small>Pornpichai Dx · 24 MAR 2025<br><a href="https://www.facebook.com/pornpichai.dx/posts/pfbid022RkdaLzSHbgPaci5sFgnZqv4efT37a3213DX8qttcj88TNwBFTGz8yFZyTyzoJUVl" target="_blank" rel="noopener">${L('อ่านรีวิวต้นฉบับ','Read original review','阅读原始评价','Оригинал отзыва')}</a></small></article><article class="review"><span class="eyebrow">FACEBOOK RECOMMENDATION</span><p lang="en">“This barber shop uses clean, modern equipment, provides excellent service to my boyfriend, and is reasonably priced.”</p><small>Natasha Ngamriab · 18 MAR 2025<br><a href="https://www.facebook.com/fernfern.nustacha/posts/pfbid037Y3F6CKwMq3HGPAi9LaZoh179i78tN4zKvoi27znwd9R7UuDcM1otGyB1wwDcycpl" target="_blank" rel="noopener">${L('อ่านรีวิวต้นฉบับ','Read original review','阅读原始评价','Оригинал отзыва')}</a></small></article></div></section></div>
  <section class="visit"><div><p class="eyebrow">FIND US IN KATHU, PHUKET</p><h2>Come as you are.<br>Leave a little sharper.</h2><p>${L('ถนนวิชิตสงคราม กะทู้ ภูเก็ต','Wichit Songkhram Road, Kathu, Phuket','普吉岛卡图区 Wichit Songkhram 路','Wichit Songkhram Road, Кату, Пхукет')}</p><a href="tel:+66654493994">065 449 3994</a></div><a class="primary" href="booking.html">${titleBarber()} <span>→</span></a></section>`;
