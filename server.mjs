@@ -18,12 +18,17 @@ const server = createServer(async (req,res) => {
    instead of dying, and report the port we actually got. */
 let port = Number(process.env.PORT) || 4173;
 const lastPort = port + 20;
+/* Hosts like Render assign PORT and probe 0.0.0.0; locally (no PORT) stay on
+   loopback so the preview isn't exposed to everyone on the same Wi-Fi.
+   A host-assigned port must be used exactly, so only walk ports locally. */
+const hosted = Boolean(process.env.PORT);
+const host = process.env.HOST || (hosted ? '0.0.0.0' : '127.0.0.1');
 server.on('error', error => {
-  if (error.code === 'EADDRINUSE' && port < lastPort) { server.listen(++port, '127.0.0.1'); return; }
+  if (error.code === 'EADDRINUSE' && !hosted && port < lastPort) { server.listen(++port, host); return; }
   console.error(error.message); process.exit(1);
 });
-server.listen(port,'127.0.0.1',()=>{
-  const url = `http://127.0.0.1:${server.address().port}`;
+server.listen(port,host,()=>{
+  const url = `http://${host === '0.0.0.0' ? 'localhost' : host}:${server.address().port}`;
   console.log(`BRAVOCUTS preview: ${url}`);
   console.log('Press Ctrl+C to stop.');
   if (process.argv.includes('--open')) {
