@@ -279,7 +279,7 @@ render();
  const root=document.documentElement,intro=document.getElementById('intro');
  if(!intro||!root.classList.contains('is-loading')){intro?.remove();return;}
  const wait=ms=>new Promise(done=>setTimeout(done,ms));
- const hero=document.querySelector('.shop-front img');
+ const hero=document.querySelector('.shop-front img, #barber-image');
  const arrived=!hero||(hero.complete&&hero.naturalWidth)?Promise.resolve():new Promise(done=>{hero.addEventListener('load',done,{once:true});hero.addEventListener('error',done,{once:true});});
  const photo=arrived.then(()=>hero&&Promise.race([hero.decode().catch(()=>{}),wait(400)]));
  await Promise.race([Promise.all([photo,document.fonts?.ready,wait(900)]),wait(6000)]);
@@ -287,7 +287,7 @@ render();
  // Opened in a background tab: keep the logo up until someone is looking.
  if(document.hidden)await new Promise(done=>document.addEventListener('visibilitychange',function seen(){if(!document.hidden){document.removeEventListener('visibilitychange',seen);done();}}));
  performance.mark('intro-reveal');
- try{sessionStorage.setItem('bc-intro','1');}catch{}
+ try{sessionStorage.setItem('bc-intro-'+(isBooking?'booking':'home'),'1');}catch{}
  intro.classList.add('leaving');root.classList.remove('is-loading');
  setTimeout(()=>intro.remove(),600);
 })();

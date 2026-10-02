@@ -8,8 +8,32 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="experience.css"><link rel="stylesheet" href="midnight.css"><link rel="stylesheet" href="shop-home.css"><link rel="stylesheet" href="booking-wizard.css"><link rel="stylesheet" href="design-system.css"><link rel="stylesheet" href="booking-cards.css"><link rel="stylesheet" href="interactions.css"><script type="module" src="experience.js"></script>
+<style>
+/* Intro: inline so it paints before any stylesheet or script has downloaded. */
+#intro{display:none}
+.is-loading #intro,#intro.leaving{display:grid;position:fixed;inset:0;z-index:1000;place-items:center;background:#080808;transition:opacity .5s ease}
+#intro.leaving{opacity:0;pointer-events:none}
+.intro-mark{display:flex;flex-direction:column;align-items:center;color:#d1ad60;font-family:Manrope,'Noto Sans Thai',system-ui,sans-serif;animation:intro-in .7s ease-out both}
+.intro-bravo{font-weight:800;font-size:clamp(44px,11vw,72px);letter-spacing:-2px;line-height:.9}
+.intro-cuts{font-weight:700;font-size:clamp(15px,3.4vw,20px);letter-spacing:.62em;margin:12px 0 0 .62em}
+.intro-bar{display:block;width:140px;height:1px;margin-top:30px;background:#ffffff1f;overflow:hidden}
+.intro-bar i{display:block;height:100%;width:0;background:#d1ad60;animation:intro-load 2.6s cubic-bezier(.2,.7,.2,1) forwards}
+#intro.leaving .intro-bar i{animation:none;width:100%;transition:width .25s ease}
+.is-loading main *{animation-play-state:paused!important}
+@keyframes intro-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes intro-load{to{width:82%}}
+@media(prefers-reduced-motion:reduce){.intro-mark,.intro-bar i{animation:none}.intro-bar i{width:60%}}
+</style>
+<script>
+/* Show the intro once per visit; repeat visits already have the photos cached.
+   The timeout is a last-resort escape if the app script never runs. */
+(function(){var d=document.documentElement,seen=false;try{seen=sessionStorage.getItem('bc-intro-'+(/booking/.test(location.pathname)?'booking':'home'))==='1';}catch(e){}
+if(seen)return;d.classList.add('is-loading');
+function escape(){if(document.hidden)return setTimeout(escape,1000);d.classList.remove('is-loading');}setTimeout(escape,8000);})();
+</script>
 </head>
 <body>
+<div id="intro" aria-hidden="true"><div class="intro-mark"><span class="intro-bravo">BRAVO</span><span class="intro-cuts">CUTS</span><span class="intro-bar"><i></i></span></div></div>
 <a href="#barbers" class="skip">Skip to content</a>
 <header><a class="logo" href="#barbers">BRAVO<span>CUTS</span><i>®</i></a><nav id="nav"></nav><div class="head-right"><span class="edition">PHUKET / THAILAND</span><select id="language" aria-label="Language"><option value="th">TH</option><option value="en">EN</option><option value="zh">中文</option><option value="ru">RU</option></select></div></header>
 <main id="main"></main>

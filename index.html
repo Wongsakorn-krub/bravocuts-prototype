@@ -27,7 +27,7 @@
 <script>
 /* Show the intro once per visit; repeat visits already have the photos cached.
    The timeout is a last-resort escape if the app script never runs. */
-(function(){var d=document.documentElement,seen=false;try{seen=sessionStorage.getItem('bc-intro')==='1';}catch(e){}
+(function(){var d=document.documentElement,seen=false;try{seen=sessionStorage.getItem('bc-intro-'+(/booking/.test(location.pathname)?'booking':'home'))==='1';}catch(e){}
 if(seen)return;d.classList.add('is-loading');
 function escape(){if(document.hidden)return setTimeout(escape,1000);d.classList.remove('is-loading');}setTimeout(escape,8000);})();
 </script>
